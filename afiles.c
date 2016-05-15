@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include "input.h"
+#include "afiles.h"
 
 #define ERROR_FILE_OPEN -3
 
 
-int FileLenth(const char *filename)
+int FileLength(const char *filename)
 {
 	FILE *f = fopen(filename, "r");
 	if (f == NULL) 
@@ -24,7 +24,7 @@ int FileLenth(const char *filename)
 }
 
 /*Копирует файл в массив*/
-int FileToMass(const char *filename, char *mass, int lenthf) 
+int FileToMass(const char *filename, char *mass, int lengthf) 
 {
 	FILE *f = fopen(filename, "r");
 	if (f == NULL) 
@@ -32,9 +32,9 @@ int FileToMass(const char *filename, char *mass, int lenthf)
 		printf("Ошибка: невозможно открыть файл \"%s\"!\n", filename);
         	exit(ERROR_FILE_OPEN);
 	}
-	fread(mass, lenthf, 1, f);
+	fread(mass, lengthf, 1, f);
 	fclose(f);
-	mass[lenthf] = '\0';
+	mass[lengthf] = '\0';
 	return 0;
 }
 
